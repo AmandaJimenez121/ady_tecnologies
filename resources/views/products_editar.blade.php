@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Products</title>
+    <link href="{{ url('css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url('css/Estilo.css') }}" rel="stylesheet">
+    <script src="{{ url('js/bootstrap.bundle.min.js') }}" crossorigin="anonymous"></script>
+</head>
+<body>
+<nav class="navbar navbar-dark bg-dark fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="">
+            <img src="{{ asset('img/LogoA.jpg')}}" alt="" width="60">
+            ADYVANCE TECHNOLOGIES
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Menu</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button>
+            </div>
+            <div class="offcanvas-body">
+            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('home')}}">Home</a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('sales')}}">Sales</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('categories')}}">Categories</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('products')}}">Products</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+    <div class="container">
+        </div>
+        <br>
+        <hr>
+        <br>
+        <h2>Products</h2> 
+        <hr>
+        <br>
+        <form action="{{ route('products_salvar', $products->id_product) }}" method="POST" enctype="multipart/form-data">
+            {{ csrf_field() }}
+            @method('PUT') 
+
+            <h3>Edit Product</h3>
+            <br>
+            <br>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control transparent-input" name="name" value="{{ old('name', $products->name) }}" id="floatingNombre" placeholder="ejemplo: Carol Valeria Garcia Peña" aria-describedby="NombreHelp">
+                <label for="floatingNombre">Nombre</label>
+                <div id="NombreHelp" class="form-text"></div>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control transparent-input" name="description" value="{{ old('description', $products->description) }}" id="floatingNombre" placeholder="ejemplo: Carol Valeria Garcia Peña" aria-describedby="NombreHelp">
+                <label for="floatingNombre">Description</label>
+                <div id="NombreHelp" class="form-text"></div>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control transparent-input" name="price" value="{{ old('price', $products->price) }}" id="floatingFechaN" aria-describedby="FnHelp">
+                <label for="floatingFechaN">Price</label>
+                <div id="FnHelp" class="form-text"></div>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control transparent-input" name="stock" value="{{ old('stock', $products->stock) }}" id="floatingSexo" placeholder="ejemplo: M/Masculino F/Femenino" aria-describedby="SexoHelp">
+                <label for="floatingSexo">Stock</label>
+                <div id="SexoHelp" class="form-text"></div>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control transparent-input" name="category" value="{{ old('category', $products->category) }}" id="floatingStatus" placeholder="ejemplo: 1:Activo 2:No Activo" aria-describedby="StatusHelp">
+                <label for="floatingStatus">Category</label>
+                <div id="StatusHelp" class="form-text"></div>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control transparent-input" name="suppliers" value="{{ old('suppliers', $products->suppliers) }}" id="floatingStatus" placeholder="ejemplo: 1:Activo 2:No Activo" aria-describedby="StatusHelp">
+                <label for="floatingStatus">Supplier</label>
+                <div id="StatusHelp" class="form-text"></div>
+            </div>
+
+            <hr><br>
+            <button type="submit" class="btn btn-primary">Modificar</button>
+            <a href="{{ route('products') }}">
+                <button type="button" class="btn btn-danger">Cancelar</button>
+            </a>
+        </form>
+
+        <br><br><br>
+    </div>
+</body>
+</html>

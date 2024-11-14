@@ -1,0 +1,137 @@
+body {
+    background-color: #1f1d1d;
+    color: #ffffff; 
+}
+
+h2 {
+    text-align: center;
+    color: #ffffff;
+}
+
+h5 {
+    color: #ffffff;
+    float: left;
+}
+
+h3 {
+    text-align: center; 
+    color: #ffffff;
+}
+
+.transparent-input {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff; 
+    border: 1px solid #ffffff;
+}
+
+.transparent-input::placeholder {
+    color: #ffffff;
+}
+
+.form-text {
+    color: #ffffff; 
+}
+
+.table {
+    background-color: #6c757d; 
+    color: #ffffff; 
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.thead-dark th {
+    background-color: #343a40; 
+    color: #ffffff;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #565e64; 
+}
+
+.table-row td {
+    vertical-align: middle;
+    padding: 12px;
+}
+
+.btn-outline-primary {
+    color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-outline-primary:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.btn-outline-danger {
+    color: #dc3545;
+    border-color: #dc3545;
+}
+
+.btn-outline-danger:hover {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.btn-outline-warning {
+    color: #ffc107;
+    border-color: #ffc107;
+}
+
+.btn-outline-warning:hover {
+    background-color: #ffc107;
+    color: #fff;
+}
+
+.btn-outline-info {
+    color: #17a2b8;
+    border-color: #17a2b8;
+}
+
+.btn-outline-info:hover {
+    background-color: #17a2b8;
+    color: #fff;
+}
+
+.btn-nuevo-registro {
+    color: #28a745;
+    border-color: #28a745;
+    float: right;
+}
+
+.btn-nuevo-registro:hover {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.pagination .page-item .page-link {
+    padding: 4px 10px; /* Ajusta el tamaño del padding */
+    font-size: 14px; /* Cambia el tamaño de la fuente */
+    color: #ffffff;
+    background-color: #343a40;
+    border: 1px solid #6c757d;
+    border-radius: 4px; /* Cambia el radio del borde */
+}
+
+.pagination .page-item .page-link:hover {
+    background-color: #495057;
+    color: #ffffff;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #007bff;
+    color: #ffffff;
+    border-color: #007bff;
+}
+
+.pagination .page-item.disabled .page-link {
+    color: #6c757d;
+    background-color: #343a40;
+    border-color: #343a40;
+}
+
+.pagination .page-item .page-link svg {
+    width: 14px; /* Ajusta el ancho del ícono de la flecha */
+    height: 14px; /* Ajusta el alto del ícono de la flecha */
+}
+
