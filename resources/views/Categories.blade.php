@@ -44,7 +44,15 @@
         </div>
     </nav>
     <div class="container" style="margin-top: 80px;">
-        <h2>Categories</h2> 
+        <h2>Categories</h2>
+
+        @if (session('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert" id="success-message">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        @endif
+
         <p style="text-align: right">
             <a href="{{ route('categories_alta') }}">
                 <button type="button" class="btn btn-nuevo-registro btn-sm">New Record</button> 
@@ -80,6 +88,18 @@
         @endforeach
         </tbody>
         </table>
+
+        <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const successMessage = document.getElementById('success-message');
+        if (successMessage) {
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+            }, 5000);
+        }
+    });
+    </script>
+
     </div>
 
 </body>

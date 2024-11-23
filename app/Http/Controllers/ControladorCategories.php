@@ -27,7 +27,7 @@ class ControladorCategories extends Controller
             'name' => $request->input('name'),
         ]);
 
-        return redirect()->route('categories');
+        return redirect()->route('categories')->with('success', 'Registro guardado exitosamente.');
     }
 
     public function categories_detalle($id)
@@ -49,7 +49,7 @@ class ControladorCategories extends Controller
         $query->name = $request->name;
         $query->save();
 
-        return redirect()->route("categories");
+        return redirect()->route("categories")->with('success', 'Registro actualizado exitosamente.');
     }
 
     public function categories_borrar($id)
@@ -59,6 +59,6 @@ class ControladorCategories extends Controller
             $category->delete();
         }
 
-        return redirect()->route('categories');
+        return redirect()->route('categories')->with('success', 'Registro eliminado exitosamente.');
     }
 }

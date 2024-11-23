@@ -45,6 +45,7 @@
 </nav>
 <br>
 <div class="container" style="margin-top: 80px;">
+    
     <form method="GET" action="{{ route('products') }}" class="mb-3">
         <div class="input-group">
             <input type="text" class="form-control" placeholder="Search products" name="search" value="{{ request('search') }}">
@@ -54,6 +55,14 @@
 
     <hr>
     <h2>Products</h2>
+
+    @if (session('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert" id="success-message">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+
     <p style="text-align: right">
         <a href="{{ route('products_alta') }}">
             <button type="button" class="btn btn-nuevo-registro btn-sm">New Record</button> 
@@ -99,8 +108,19 @@
         </tbody>
     </table>
 
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const successMessage = document.getElementById('success-message');
+        if (successMessage) {
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+            }, 5000);
+        }
+    });
+    </script>
+
     <div class="custom-pagination">
-        {{ $products->links() }}
+        {{ $products->links('pagination::bootstrap-4') }}
     </div>
 </div>
 </body>

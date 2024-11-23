@@ -13,7 +13,7 @@ class ControladorProducts extends Controller
 
         $products = Products::when($query, function ($queryBuilder) use ($query) {
             $queryBuilder->where('name', 'LIKE', '%' . $query . '%');
-        })->paginate(5);
+        })->paginate(3);
 
         return view('products')->with(['products' => $products]);
     }
@@ -43,7 +43,7 @@ class ControladorProducts extends Controller
             'suppliers' => $request->input('suppliers')
         ]);
 
-        return redirect()->route('products');
+        return redirect()->route('products')->with('success', 'Registro guardado exitosamente.');
     }
 
     public function products_detalle($id)
@@ -70,7 +70,7 @@ class ControladorProducts extends Controller
         $query->suppliers = $request->suppliers;
         $query->save();
 
-        return redirect()->route("products");
+        return redirect()->route("products")->with('success', 'Registro actualizado exitosamente.');
     }
 
     public function products_borrar($id)
@@ -80,6 +80,6 @@ class ControladorProducts extends Controller
             $product->delete();
         }
 
-        return redirect()->route('products');
+        return redirect()->route('products')->with('success', 'Registro eliminado exitosamente.');
     }
 }

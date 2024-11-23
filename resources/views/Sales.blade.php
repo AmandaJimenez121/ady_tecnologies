@@ -28,7 +28,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('home')}}">Home</a>
                     </li>
-                    
                     <li class="nav-item">
                         <a class="nav-link" href="{{route('sales')}}">Sales</a>
                     </li>
@@ -43,51 +42,68 @@
         </div>
     </div>
 </nav>
-    <div class="container">
+<div class="container" style="margin-top: 80px;">
+    <h2>Sales</h2>
+    <hr>
+
+    <!-- Mostrar mensaje de éxito -->
+    @if (session('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert" id="success-message">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
-        <br>
-        <hr>
-        <br><br>
-        <h2>Sales</h2> 
-        <p style="text-align: right">
-            <a href="{{ route('sales_alta') }}">
-                <button type="button" class="btn btn-nuevo-registro btn-sm">New Record</button> 
-            </a>
-        </p>
-        <br>
-        <hr><br>
-        <table class="table table-hover table-striped">
+    @endif
+
+    <p style="text-align: right">
+        <a href="{{ route('sales_alta') }}">
+            <button type="button" class="btn btn-nuevo-registro btn-sm">New Record</button>
+        </a>
+    </p>
+    <br>
+    <table class="table table-hover table-striped">
         <thead class="thead-dark">
             <tr>
                 <th>#</th>
                 <th>Date</th>
                 <th>Total</th>
                 <th>User</th>
-                <th></th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
-        @foreach ( $sales as $sale )
+        @foreach ($sales as $sale)
         <tr class="table-row">
             <td>{{ $sale->id_sale }}</td>
             <td>{{ $sale->date }}</td>
             <td>{{ $sale->total }}</td>
             <td>{{ $sale->user }}</td>
             <td class="actions">
-                <a href="{{ route('sales_editar', ['id'=>$sale->id_sale]) }}">
+                <a href="{{ route('sales_editar', ['id' => $sale->id_sale]) }}">
                     <button type="button" class="btn btn-outline-warning btn-sm">Editar</button>
                 </a>
-                <a href="{{ route('sales_borrar', ['id'=>$sale->id_sale]) }}">
+                <a href="{{ route('sales_borrar', ['id' => $sale->id_sale]) }}">
                     <button type="button" class="btn btn-outline-danger btn-sm" onclick="return confirm('¿Seguro que desea borrar el registro?')">Borrar</button>
                 </a>
-                <a href="{{ route('sales_detalle', ['id'=>$sale->id_sale]) }}">
+                <a href="{{ route('sales_detalle', ['id' => $sale->id_sale]) }}">
                     <button type="button" class="btn btn-outline-info btn-sm">Detalles</button>
                 </a>
             </td>
-        </tr> 
+        </tr>
         @endforeach
         </tbody>
-        </table>
-    </div>
+    </table>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const successMessage = document.getElementById('success-message');
+        if (successMessage) {
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+            }, 5000);
+        }
+    });
+</script>
+
 </body>
 </html>
